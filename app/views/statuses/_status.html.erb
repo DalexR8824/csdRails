@@ -1,0 +1,6 @@
+<tr>
+	<td><%= status.id %></td>
+	<td><%= status.name %></td> 
+	<td><%= status.description %></td>
+	<td><%= link_to "Editar", edit_status_path(status), :class => "btn btn-info btn-xs" %> <%= link_to 'Eliminar', edit_status_path(status), :class => "btn btn-danger btn-xs" %></td>
+</tr>
