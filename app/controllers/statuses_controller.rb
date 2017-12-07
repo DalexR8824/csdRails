@@ -30,6 +30,12 @@ class StatusesController < ApplicationController
 		redirect_to statuses_path
 	end
 
+	def destroy
+		@status = Status.find params[:id]
+	    @status.destroy
+	    redirect_to statuses_path
+	end
+
 
 
 

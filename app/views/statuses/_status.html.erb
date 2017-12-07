@@ -2,5 +2,7 @@
 	<td><%= status.id %></td>
 	<td><%= status.name %></td> 
 	<td><%= status.description %></td>
-	<td><%= link_to "Editar", edit_status_path(status), :class => "btn btn-info btn-xs" %> <%= link_to 'Eliminar', edit_status_path(status), :class => "btn btn-danger btn-xs" %></td>
+	<td><%= link_to "Editar", edit_status_path(status), :class => "btn btn-info btn-xs" %> 
+		<%= link_to 'Eliminar', status, :method => :DELETE, data: {confirm: 'Esta seguro?'}, :class => "btn btn-danger btn-xs" %>
+	</td>
 </tr>
