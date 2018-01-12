@@ -1,4 +1,5 @@
 class StatusesController < ApplicationController
+	layout 'main'
 	
 	def new	
 		@status = Status.new 

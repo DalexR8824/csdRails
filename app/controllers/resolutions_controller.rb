@@ -1,4 +1,6 @@
 class ResolutionsController < ApplicationController
+	layout 'main'
+
 	def index
 		@resolution = Resolution.all
 	end

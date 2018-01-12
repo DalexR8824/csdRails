@@ -41,9 +41,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                        
-                        <%= render @resolution %>
-                        
+                        <%- item = 1 %>
+                        <%- @resolution.each do |resolution|  %>
+                          <tr>
+                            <td><%= item %></td>
+                            <td><%= resolution.name %></td> 
+                            <td><%= resolution.description %></td>
+                            <td><%= resolution.active %></td>
+                            <td><%= link_to "Editar", edit_resolution_path(resolution), :class => "btn btn-info btn-xs" %> 
+                            </td>
+                          </tr>
+                          <%- item = item + 1 %>
+                        <% end %>
                       </tbody>
                     </table>
 

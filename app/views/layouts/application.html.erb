@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CsdRails</title>
+    <title><%= content_for?(:title) ? yield(:title) : "PyGoogle Demo" %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -10,6 +10,7 @@
 
     <!-- Bootstrap -->
     <link href="../../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/boostbox.css">
     <!-- Font Awesome -->
     <link href="../../assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -19,11 +20,15 @@
 
     <!-- Custom Theme Style -->
     <link href="../../assets/build/css/custom.min.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag :application %>
+    <%= csrf_meta_tags %>
     
 
   </head>
 
-  <body>
+  <body class="body-dark">
 
     <%= yield %>
   </body>
