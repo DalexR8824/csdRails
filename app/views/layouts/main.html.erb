@@ -14,31 +14,31 @@
     
 
     <!-- Bootstrap -->
-    <link href="../../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../../assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../../assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../../../assets/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../../assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../../../assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
-    <link href="../../assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="../../assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
 
     <!-- bootstrap-progressbar -->
-    <link href="../../assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../../../assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../../assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../../../assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../../assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="../../../assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../../assets/build/css/custom.min.css" rel="stylesheet">
+    <link href="../../../assets/build/css/custom.min.css" rel="stylesheet">
     
    
   </head>
@@ -52,7 +52,7 @@
                 <%= link_to '/', :class => 'main-brand' do %>
                     <h3 class="text-light text-white">
                     <span> 
-                      <img alt="cloudservicedeskblanco2.png" src="../../assets/images/csd-logo.png"> 
+                      <img alt="cloudservicedeskblanco2.png" src="../../../assets/images/csd-logo.png"> 
                     </span>
                   </h3>
                 <% end %>
@@ -63,11 +63,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../../assets/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="../../../assets/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido</span>
-                <h2><%= current_user.name%> <%= current_user.lastName %> </h2>
+                <h2><%= current_user.name%></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -81,7 +81,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-user"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><%= link_to "Usuarios", users_path%></li>
+                      <li><%= link_to "Usuarios", users_path %></li>
                       <li><a href="index2.html">Roles</a></li>
                     </ul>
                   </li>
@@ -159,11 +159,12 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../../assets/images/img.jpg" alt=""><%= current_user.name %> <%= current_user.lastName %>
+                    <img src="../../../assets/images/img.jpg" alt=""><%= current_user.alias %> 
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                        <% id = current_user.id %>
+                    <li><%= link_to "Perfil", edit_user_path(id) %></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
@@ -252,6 +253,13 @@
         <!-- page content -->
         <div class="right_col" role="main">
 
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+
           <%= yield %>
           
         </div>
@@ -269,62 +277,62 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../../assets/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../../assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../../assets/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../../../assets/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../../assets/vendors/nprogress/nprogress.js"></script>
+    <script src="../../../assets/vendors/nprogress/nprogress.js"></script>
     <!-- jQuery custom content scroller -->
-    <script src="../../assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../../assets/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <!-- Chart.js -->
-    <script src="../../assets/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="../../../assets/vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../../assets/vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="../../../assets/vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../../assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../../../assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../../assets/vendors/iCheck/icheck.min.js"></script>
+    <script src="../../../assets/vendors/iCheck/icheck.min.js"></script>
     <!-- Datatables -->
-    <script src="../../assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../../assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="../../assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-    <script src="../../assets/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="../../assets/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="../../assets/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../../../assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../../assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../../../assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../../../assets/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../../../assets/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../../../assets/vendors/pdfmake/build/vfs_fonts.js"></script>
     <!-- Skycons -->
-    <script src="../../assets/vendors/skycons/skycons.js"></script>
+    <script src="../../../assets/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../../assets/vendors/Flot/jquery.flot.js"></script>
-    <script src="../../assets/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../../assets/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../../assets/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../../assets/vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="../../../assets/vendors/Flot/jquery.flot.js"></script>
+    <script src="../../../assets/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../../../assets/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../../../assets/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../../../assets/vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../../assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../../assets/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../../assets/vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="../../../assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../../../assets/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../../../assets/vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../../assets/vendors/DateJS/build/date.js"></script>
+    <script src="../../../assets/vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../../assets/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../../assets/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../../assets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="../../../assets/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../../../assets/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../../../assets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../../assets/vendors/moment/min/moment.min.js"></script>
-    <script src="../../assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../../../assets/vendors/moment/min/moment.min.js"></script>
+    <script src="../../../assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../../assets/build/js/custom.min.js"></script>
+    <script src="../../../assets/build/js/custom.min.js"></script>
   </body>
 </html>

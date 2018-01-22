@@ -1,28 +1,67 @@
 class UsersController < ApplicationController
 	layout 'main'
-
+ 
 	def new	
 		@user = User.new 
 	end
 
 	def create
-		#render plain: params[:status].inspect
-		@user = User.new status_params
-		@user.save
 
-		redirect_to statuses_path
+		@user = User.new user_params 
+		if @user.save
+			redirect_to users_path
+		else 
+			redirect_to authenticated_root_path
+		end
 	end
 
 	def edit
 		@user = User.find params[:id]
 	end
 
+	def update
+		if params[:user][:password].blank?
+		  params[:user].delete(:password)
+		  params[:user].delete(:password_confirmation)
+		end
+		@user = User.find params[:id]
+		@user.update user_params
+		redirect_to users_path
+	end
+
 	def show
-		#@user = User.find params[:id]
+		@user = User.find params[:id]
 	end
 
 	def index
-		@users = User.all
+		@users = User.where(status: 'activo')
 	end
+
+	def destroy
+		@user = User.find params[:id]
+		@user.update({status: 'inactivo'})
+		redirect_to users_path
+	end
+
+
+
+
+	private
+
+	def user_params
+		params.require(:user).permit(:email, :alias, :name, :lastName, :phone, :celPhone, :documentType, 
+										:identificationNumber, :birthdate, :gender, :statusCivil, :numberChildren, 
+										:personalMail, :personalMail, :address, :status, :password)
+
+	end
+
+	def delete_params
+		
+		params.require(:user).permit(:status)
+	end
+
+
+
+
 
 end

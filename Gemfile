@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Autorización de Usuarios CanCan
+gem 'cancancan', '~> 2.0'
 # Autenticación de Usuarios Devise
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+  scope "/admin" do
+	  resources :users
+	end
   resources :statuses
   resources :resolutions
   resources :flows
-  resources :users
   
 
 	devise_scope :user do

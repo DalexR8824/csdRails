@@ -6,12 +6,13 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-	devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :lastName, :phone, :celPhone, :documentType , :identificationNumber , 
-														:birthdate, :gender, :statusCivil, :numberChildren, :personalMail,
-														 :address, :status, :alias, :mail ])
-	devise_parameter_sanitizer.permit(:account_update, keys: [:name, :lastName, :phone, :celPhone, :documentType , :identificationNumber , 
-														:birthdate, :gender, :statusCivil, :numberChildren, :personalMail,
-														 :address, :status, :alias, :mail])
+	devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :alias, :name, :lastName, :phone, :celPhone, :documentType, 
+														:identificationNumber, :birthdate, :gender, :statusCivil, :numberChildren, 
+														:personalMail, :personalMail, :address, :status, :password ])
+
+	devise_parameter_sanitizer.permit(:account_update, keys: [:email, :alias, :name, :lastName, :phone, :celPhone, :documentType, 
+														:identificationNumber, :birthdate, :gender, :statusCivil, :numberChildren, 
+														:personalMail, :personalMail, :address, :status, :password])
 	end
 
 
