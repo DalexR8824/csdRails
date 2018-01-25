@@ -1,11 +1,19 @@
-
 <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Administrador de Flujos</h3>
+                <h3>Administrador de Formularios</h3>
               </div>
 
-              
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="clearfix"></div>
@@ -14,9 +22,9 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Flujos</h2>
+                    <h2>Roles</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <%= link_to 'Nuevo', new_flow_path, :class => "btn btn-round btn-success"%>
+                      <%= link_to 'Nuevo', new_role_path, :class => "btn btn-round btn-success"%>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -33,13 +41,12 @@
                       </thead>
                       <tbody>
                         <%- item = 1 %>
-                        <%- @flow.each do |flow|  %>
+                        <%- @role.each do |role|  %>
                           <tr>
                             <td><%= item %></td>
-                            <td><%= flow.name %></td> 
-                            <td><%= flow.description %></td>
-                            <td><%= link_to "Editar", edit_flow_path(flow), :class => "btn btn-info btn-xs" %> 
-                            <%= link_to "Eliminar", flow_path(flow), :method => :DELETE, data: {confirm: 'Esta seguro?'}, :class => "btn btn-danger btn-xs" %>
+                            <td><%= role.name %></td> 
+                            <td><%= role.description %></td>
+                            <td><%= link_to "Editar", edit_role_path(role), :class => "btn btn-info btn-xs" %> 
                             </td>
                           </tr>
                           <%- item = item + 1 %>

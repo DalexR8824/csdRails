@@ -1,4 +1,5 @@
 class StatusesController < ApplicationController
+	before_action :authenticate_user!
 	layout 'main'
 	
 	def new	
@@ -18,7 +19,7 @@ class StatusesController < ApplicationController
 	end
 
 	def index
-		@statuses = Status.all
+		@statuses = Status.where(status: 'activo')
 	end
 
 	def edit
@@ -33,10 +34,9 @@ class StatusesController < ApplicationController
 
 	def destroy
 		@status = Status.find params[:id]
-	    @status.destroy
-	    redirect_to statuses_path
+		@status.update({status: 'inactivo'})
+		redirect_to statuses_path
 	end
-
 
 
 

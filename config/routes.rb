@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :statuses
   resources :resolutions
   resources :flows
+  resources :roles
   
 
 	devise_scope :user do

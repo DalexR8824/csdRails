@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
 	layout 'main'
  
 	def new	
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.where(status: 'activo')
+		@usersD = User.where(status: 'inactivo')
 	end
 
 	def destroy

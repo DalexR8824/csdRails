@@ -1,4 +1,5 @@
 class ResolutionsController < ApplicationController
+	before_action :authenticate_user!
 	layout 'main'
 
 	def index
