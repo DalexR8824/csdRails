@@ -13,11 +13,15 @@ class RolesController < ApplicationController
 	end
 
 	def create
-		@role = Role.new role_params
-		@role.users = params[:users]
-		#raise params.to_yaml Muestra excepción para verificar que parametros estan llegando
-		@role.save
-		redirect_to roles_path
+
+		@role = Role.new(role_params)
+	    if @role.save
+	      flash[:notice] = 'Role creado correctamente'
+	      redirect_to roles_path
+	    else
+	      render :new
+	    end
+
 	end 
 
 	def edit
@@ -33,7 +37,7 @@ class RolesController < ApplicationController
 	private
 
 	def role_params
-		params.require(:role).permit(:name, :description, :users)
+		params.require(:role).permit(:name, :description, :users, user_ids:[])
 	end
 
 

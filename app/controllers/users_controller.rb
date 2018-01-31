@@ -3,21 +3,27 @@ class UsersController < ApplicationController
 	layout 'main'
  
 	def new	
-		@user = User.new 
+		@user = User.new
+		@roles = Role.all
 	end
+
+	
 
 	def create
-
-		@user = User.new user_params 
-		if @user.save
-			redirect_to users_path
-		else 
-			redirect_to authenticated_root_path
-		end
-	end
+	    @user = User.new(user_params)
+	    if @user.save
+	      flash[:notice] = 'Cambios guardados correctamente'
+	      redirect_to users_path
+	    else
+	      render :new
+	    end
+  	end
 
 	def edit
-		@user = User.find params[:id]
+		
+		@user = User.find(params[:id])
+		@roles = Role.all
+		
 	end
 
 	def update
@@ -53,7 +59,7 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:email, :alias, :name, :lastName, :phone, :celPhone, :documentType, 
 										:identificationNumber, :birthdate, :gender, :statusCivil, :numberChildren, 
-										:personalMail, :personalMail, :address, :status, :password)
+										:personalMail, :personalMail, :address, :status, :password, :roles)
 
 	end
 

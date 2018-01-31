@@ -18,7 +18,7 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             
             <%- @users.each do |user| %>
-              <%= check_box_tag "users[]", user.id %> <%= user.name%>
+              <%= check_box_tag "user_ids:[]", user.id %> <%= user.name%>
             <%end%>
           </div>
         </div>

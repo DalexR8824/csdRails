@@ -159,6 +159,20 @@
 		</div>
 	</div>
 
+	 <div class="form-group">
+      <%= f.label :roles, "Roles", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        
+      	<%- @user.roles.each do |role| %>
+          <%= check_box_tag role.id, role.id  %> <%= role.name%>
+          
+        <%end%>
+        
+      </div>
+    </div>
+
+
+
 	<div class="form-group">
 
 		<%= f.label :password, "Contraseña *", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
