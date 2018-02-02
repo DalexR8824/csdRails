@@ -4,12 +4,11 @@ class RolesController < ApplicationController
 
 
 	def index
-		@role = Role.all
+		@role = Role.paginate(page: params[:page], per_page: 10).all
 	end
 
 	def new
 		@role = Role.new
-		@users = User.all
 	end
 
 	def create
@@ -37,7 +36,7 @@ class RolesController < ApplicationController
 	private
 
 	def role_params
-		params.require(:role).permit(:name, :description, :users, user_ids:[])
+		params.require(:role).permit(:name, :description, user_ids:[])
 	end
 
 

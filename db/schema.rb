@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131204221) do
+ActiveRecord::Schema.define(version: 20180201210943) do
 
   create_table "flows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180131204221) do
     t.string "last_sign_in_ip"
     t.string "name"
     t.string "lastName"
-    t.integer "phone"
+    t.bigint "phone"
     t.bigint "celPhone"
     t.string "documentType"
     t.bigint "identificationNumber"

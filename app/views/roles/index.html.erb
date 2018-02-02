@@ -55,6 +55,12 @@
                     </table>
 
                   </div>
+                  <div class="digg_pagination">
+                    <div class="page_info">
+                      <%= page_entries_info @role %>
+                    </div>
+                    <%= will_paginate @role, :container => false %>
+                  </div>
                 </div>
               </div>
 

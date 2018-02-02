@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+gem 'will_paginate', '~> 3.1.0'
 # Autorización de Usuarios CanCan
 gem 'cancancan', '~> 2.0'
 # Autenticación de Usuarios Devise
