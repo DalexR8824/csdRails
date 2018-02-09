@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
 	before_action :authenticate_user!
 	layout 'main'
  
@@ -24,8 +25,8 @@ class UsersController < ApplicationController
 
 	def update
 		if params[:user][:password].blank?
-		  params[:user].delete(:password)
-		  params[:user].delete(:password_confirmation)
+		  	params[:user].delete(:password)
+		  	params[:user].delete(:password_confirmation)
 		end
 		@user = User.find params[:id]
 		@user.update user_params

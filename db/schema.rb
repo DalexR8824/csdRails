@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201210943) do
+ActiveRecord::Schema.define(version: 20180208215614) do
+
+  create_table "agents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "agents_jobs", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "agent_id", null: false
+    t.bigint "job_id", null: false
+    t.index ["agent_id", "job_id"], name: "index_agents_jobs_on_agent_id_and_job_id"
+  end
+
+  create_table "agents_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "agent_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["agent_id", "user_id"], name: "index_agents_users_on_agent_id_and_user_id"
+  end
 
   create_table "flows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -27,6 +46,32 @@ ActiveRecord::Schema.define(version: 20180201210943) do
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_has_users_on_role_id"
     t.index ["user_id"], name: "index_has_users_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "job_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["job_id", "user_id"], name: "index_jobs_users_on_job_id_and_user_id"
+  end
+
+  create_table "permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "role_id", null: false
+    t.bigint "permission_id", null: false
+    t.index ["role_id", "permission_id"], name: "index_permissions_roles_on_role_id_and_permission_id"
   end
 
   create_table "resolutions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

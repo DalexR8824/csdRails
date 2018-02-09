@@ -5,6 +5,8 @@ class User < ApplicationRecord
   #has_many :has_roles
   #has_many :roles, through: :has_roles
   has_and_belongs_to_many :roles
+  has_and_belongs_to_many :agents
+  has_and_belongs_to_many :jobs
 
   
 

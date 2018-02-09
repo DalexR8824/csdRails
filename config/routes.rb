@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :resolutions
   resources :flows
   resources :roles
+  resources :agents
+  resources :jobs
   
 
 	devise_scope :user do

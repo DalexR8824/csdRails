@@ -1,0 +1,109 @@
+ <%= form_for @agent, :html => {:class => 'form-horizontal form-label-left', :id => 'demo-form2'} do |f| %>
+
+        <div class="form-group">
+          <%= f.label :name, "Nombre", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <%= f.text_field :name, :class => "form-control col-md-7 col-xs-12" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "Descripción", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <%= f.text_area :description, :class => "form-control col-md-7 col-xs-12" %>
+          </div>
+        </div>
+        <div class="ln_solid"></div>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Agentes asignados a la lista</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>E-mail</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%- item = 1 %>
+                        <%- @lista_usuarios.each do |agent|  %>
+                          <tr>
+                            <td><%= item %></td>
+                            <td><%= agent.name %></td> 
+                            <td><%= agent.lastName %></td>
+                            <td><%= agent.email %></td> 
+                            </td>
+                          </tr>
+                          <%- item = item + 1 %>
+                        <% end %>
+                      </tbody>
+                    </table>
+
+                    <div class="digg_pagination">
+                      <div class="page_info">
+                        <%= page_entries_info @lista_usuarios %>
+                      </div>
+                      <%= will_paginate @lista_usuarios, :container => false %>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Agregar usuarios al grupo</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                         <div class="form-group">
+                            <%= f.label :users, "Usuarios", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="overflow: scroll ">
+                              
+                             
+                              <%= f.collection_check_boxes(:user_ids, @users, :id, :name, {}, {multiple: true}) do |ds| %>
+                                <%= ds.label(class:"container") do %>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                  <%= ds.check_box %>
+                                  <%= ds.object.name %>
+                                  <%= ds.object.lastName %>
+
+                                  <span class="checkmark"></span>
+                                <% end %>
+                              </div>
+                              <% end %>
+                            </div>
+                          </div>
+
+                    <div class="ln_solid"></div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                      <%= link_to 'Cancelar', agents_path, :class => "btn btn-primary"%>
+                      <%= f.submit "Guardar", :class => "btn btn-success" %>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+        </div>
+
+        
+         
+
+      <% end %>

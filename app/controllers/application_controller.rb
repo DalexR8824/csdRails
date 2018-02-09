@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
 														:personalMail, :personalMail, :address, :status, :password])
 	end
 
+	#def permission_validate
+	#	permisos = current_user.role.permissions 
+
+	#	if permisos 
+	#end
+
+
 
  
 end

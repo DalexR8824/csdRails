@@ -4,6 +4,7 @@ class Role < ApplicationRecord
   	#has_many :users, through: :has_users
 
   	has_and_belongs_to_many :users
+  	has_and_belongs_to_many :permissions
 
 	#after_create :save_users
 
