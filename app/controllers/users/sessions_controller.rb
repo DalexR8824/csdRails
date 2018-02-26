@@ -1,8 +1,15 @@
 class Users::SessionsController < Devise::SessionsController
-  layout 'main'
+  
 
-  def index
-    @users = User.all
+  def active_for_authentication?
+    super do |resource|
+       unless resource.active?
+        sign_out
+        # you can set flash message as well.
+        redirect_to :sorry_not_active_url
+        return
+      end
+    end
   end
   # before_action :configure_sign_in_params, only: [:create]
 

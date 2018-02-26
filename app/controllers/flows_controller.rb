@@ -19,14 +19,18 @@ class FlowsController < ApplicationController
 
 	def edit
 		@flow = Flow.find params[:id]
+		@statuses = Status.all
+		@state = @flow.statuses.all
+
+		
 
 	end
 
 	def update
-		@flow = Flow.find params[:id]
+		@flow = Flow.find params[:id] 
 		@flow.update flows_params
 
-		redirect_to flows_path
+		redirect_to edit_flow_path
 	end
 
 	def destroy
@@ -42,7 +46,7 @@ class FlowsController < ApplicationController
 
 
 	def flows_params
-		params.require(:flow).permit(:name, :description)
+		params.require(:flow).permit(:name, :description, status_ids:[])
 	end
 
 

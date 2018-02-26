@@ -1,0 +1,114 @@
+
+<div class="row">
+
+  <div class="col-md-6 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Agregar Estado</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <br>
+                      <%= form_for @flow, :html => {:class => 'form-horizontal form-label-left', :id => 'demo-form2'} do |f| %>
+
+                          <div class="form-group">
+                            
+                            <div class="col-md-12 col-sm-12 col-xs-12" style="overflow: scroll ">
+                              
+                             
+                              <%= f.collection_check_boxes(:status_ids, @statuses, :id, :name, {}, {multiple: true}) do |ds| %>
+                                
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <%= ds.check_box %>
+                                    <%= ds.object.name %>
+
+                                    <span class="checkmark"></span>
+                                 
+                                </div>
+                            
+
+                              
+
+                              <% end %>
+                            </div>
+                          </div>
+
+                          <div class="ln_solid"></div>
+
+                          <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <%= f.submit "Guardar", :class => "btn btn-success" %>
+                            </div>
+                          </div>
+
+                        <% end %>
+                    </div>
+
+                  </div>
+
+                  
+   </div>
+
+  <div class="col-md-6 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Transiciones</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <br>
+
+
+
+          
+        </div>
+      </div>
+
+                  
+   </div>
+
+</div>
+
+<div class="row">
+  <%- @state.each do |states|%>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="count"><%= states.name %></div>
+
+        <h3>Transición</h3>
+        
+      </div>
+    </div>
+  <%end%>
+  
+</div>

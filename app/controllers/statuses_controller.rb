@@ -46,7 +46,7 @@ class StatusesController < ApplicationController
 	private
 
 	def status_params
-		params.require(:status).permit(:name, :description)
+		params.require(:status).permit(:name, :description, :status, flow_ids:[])
 
 	end
 
