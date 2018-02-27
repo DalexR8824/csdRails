@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :roles
   resources :agents
   resources :jobs
+  resources :forms
+  resources :fields
+
+  get '/forms/addField/:id', to: 'fields#new', as: 'agregarC'
   
 
 	devise_scope :user do
