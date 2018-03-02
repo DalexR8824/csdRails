@@ -22,7 +22,6 @@ class FlowsController < ApplicationController
 		@statuses = Status.all
 		@state = @flow.statuses.all
 
-		
 
 	end
 

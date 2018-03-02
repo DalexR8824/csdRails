@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227220702) do
+ActiveRecord::Schema.define(version: 20180301212347) do
 
   create_table "agents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 20180227220702) do
     t.string "textDefault"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "TypeField_id"
+    t.bigint "form_id"
+    t.index ["TypeField_id"], name: "index_fields_on_TypeField_id"
+    t.index ["form_id"], name: "index_fields_on_form_id"
   end
 
   create_table "flows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -127,6 +131,13 @@ ActiveRecord::Schema.define(version: 20180227220702) do
     t.string "status"
   end
 
+  create_table "type_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "type"
+    t.string "object"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -160,6 +171,7 @@ ActiveRecord::Schema.define(version: 20180227220702) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fields", "forms"
   add_foreign_key "has_users", "roles"
   add_foreign_key "has_users", "users"
 end

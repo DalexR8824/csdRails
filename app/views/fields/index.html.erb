@@ -1,0 +1,32 @@
+<div class="x_content">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre del Campo</th>
+        <th>Slug del Campo</th>
+        <th>Tipo de Campo</th>
+        <th>Tiene Dependientes</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- item = 1 %>
+      <%- @fields.each do |field|  %>
+        <tr>
+          <td><%= item %></td>
+          <td><%= field.name %></td> 
+          <td><%= field.slug %></td>
+          <td><%= field.slug %></td>
+          <td>Dependencias</td>
+          <td><%= link_to "Editar", edit_field_path(field), :class => "btn btn-info btn-xs" %> 
+          <%= link_to "Eliminar", field_path(field), :method => :DELETE, data: {confirm: 'Esta seguro?'}, :class => "btn btn-danger btn-xs" %>
+          </td>
+        </tr>
+        <%- item = item + 1 %>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

@@ -24,6 +24,7 @@ class FormsController < ApplicationController
 
 	def edit
 		@form = Form.find(params[:id])
+		@fields = @form.fields 
 		
 	end
 
@@ -39,6 +40,7 @@ class FormsController < ApplicationController
 	end
 
 	def addFields
+		@field = Field.new 
 		@addFields = params[:id]
 		render '/fields/new'
 		
