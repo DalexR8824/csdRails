@@ -5,6 +5,7 @@ class FieldsController < ApplicationController
 	def new 
 		
 		@field = Field.new 
+
 		
 	end
 
@@ -12,10 +13,12 @@ class FieldsController < ApplicationController
 	
 		@field = Field.new(fields_params)
 
-		if @field.save
+		if @field.save 
+			flash[:notice] = "Campo creado correctamente"
 			redirect_to edit_form_path(@field.form_id)
 		else
-			render 'new'
+	
+			flash[:notice] = "No se puede guardar"
 		end
 		
 	end
@@ -28,9 +31,11 @@ class FieldsController < ApplicationController
 		@field = Field.find(params[:id])
 
 		if @field.update (fields_params)
+			flash[:notice] = "Campo editado correctamente"
 			redirect_to edit_form_path(@field.form_id)
 		else
-			render 'update'
+			render 'edit'
+			puts @field.errors.full_messages
 		end
 		
 	end
@@ -54,7 +59,7 @@ class FieldsController < ApplicationController
 	private
 
 	def fields_params
-		params.require(:field).permit(:name, :slug, :description, :textDefault, :form_id)
+		params.require(:field).permit(:name, :slug, :description, :textDefault, :form_id, :type_field_id)
 		
 	end
 

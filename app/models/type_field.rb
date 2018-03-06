@@ -1,3 +1,3 @@
 class TypeField < ApplicationRecord
-	belongs_to :fields
+	has_many :fields
 end

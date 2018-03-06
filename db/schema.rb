@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301212347) do
+ActiveRecord::Schema.define(version: 20180306221400) do
 
   create_table "agents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20180301212347) do
     t.string "textDefault"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "TypeField_id"
     t.bigint "form_id"
-    t.index ["TypeField_id"], name: "index_fields_on_TypeField_id"
+    t.bigint "type_field_id"
     t.index ["form_id"], name: "index_fields_on_form_id"
+    t.index ["type_field_id"], name: "index_fields_on_type_field_id"
   end
 
   create_table "flows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20180301212347) do
   end
 
   create_table "type_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "type"
+    t.string "name"
     t.string "object"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 20180301212347) do
   end
 
   add_foreign_key "fields", "forms"
+  add_foreign_key "fields", "type_fields"
   add_foreign_key "has_users", "roles"
   add_foreign_key "has_users", "users"
 end

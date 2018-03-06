@@ -26,9 +26,23 @@
         <%= f.text_area :textDefault, :class => "form-control col-md-7 col-xs-12" %>
       </div>
     </div>
+
+    <div class="form-group">
+      <%= f.label :type_field_id, "Tipo de Campo", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        
+        <%= f.collection_select(:type_field_id, TypeField.all, :id, :name) %>
+          
+        
+      </div>
+    </div>
+
     <%- form_id = params[:id]%>
-    <div class="hide">
-      <%= f.text_field :form_id, value: form_id, :class => "form-control col-md-7 col-xs-12" %>
+    <div class="form-group">
+      <%= f.label :form_id, "Fomulario", :class => "control-label col-md-3 col-sm-3 col-xs-12" %>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.text_field :form_id, value: form_id, :class => "form-control col-md-7 col-xs-12" %>
+      </div>
     </div>
     
 
@@ -42,3 +56,5 @@
       </div>
 
   <% end %>
+
+  <%puts @field%>
